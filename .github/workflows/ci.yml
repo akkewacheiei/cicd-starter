@@ -37,10 +37,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Deploy to gh-pages
+      - name: Get latest changes from main
+        run: git fetch origin main:main
+
+      - name: Merge main into gh-pages
+        run: git merge --no-commit --no-ff main
+
+      - name: Copy index.html
+        run: cp main/index.html .
+
+      - name: Commit changes
         run: |
-          git config --global user.name "akkewacheiei"
-          git config --global user.email "akkewach.yodsomboon@gmail.com"
-          git checkout -B gh-pages
-          git add .
-          git push -f origin gh-pages
+          git add index.html
+          git commit -m "Update index.html from main"
+      
+      - name: Push changes to gh-pages
+        run: git push origin HEAD:gh-pages
