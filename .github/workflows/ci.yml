@@ -37,25 +37,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Checkout gh-pages branch
-        run: git checkout gh-pages
-      
-      - name: Configure SSH Key
-        run: |
-          mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-      
-      - name: Pull latest changes from gh-pages
-        run: git pull origin gh-pages
-
-      - name: Checkout main branch
-        run: git checkout main
-
       - name: Configure SSH Key
         run: |
           mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa    
 
-      - name: Pull latest changes from main
-        run: git pull origin main
+      - name: Fetch latest changes from remote
+        run: git fetch origin main:main
 
       - name: Merge main into gh-pages
         run: git merge --no-commit --no-ff main
