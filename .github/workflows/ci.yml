@@ -46,12 +46,8 @@ jobs:
       - name: Merge main into gh-pages
         run: git merge --no-commit --no-ff main
 
-      - name: Copy index.html
-        run: cp index.html .
-
       - name: Commit changes
         run: |
-          git add index.html
           git commit -m "Update index.html from main"
       
       - name: Push changes to gh-pages
