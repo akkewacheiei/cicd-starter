@@ -46,6 +46,11 @@ jobs:
       - name: Merge main into gh-pages
         run: git merge --no-commit --no-ff main
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "akkewach.yodsomboon@gmail.com"
+          git config --global user.name "akkewacheiei"
+
       - name: Commit changes
         run: |
           git commit -m "Update index.html from main"
