@@ -36,6 +36,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      
+      - name: Checkout gh-pages branch
+        run: git checkout gh-pages
+      
+      - name: Configure SSH Key
+        run: |
+          mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      
+      - name: Pull latest changes from gh-pages
+        run: git pull origin gh-pages
 
       - name: Checkout main branch
         run: git checkout main
