@@ -47,7 +47,7 @@ jobs:
         run: git merge --no-commit --no-ff main
 
       - name: Copy index.html
-        run: cp main/index.html .
+        run: cp index.html .
 
       - name: Commit changes
         run: |
