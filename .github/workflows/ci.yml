@@ -40,6 +40,9 @@ jobs:
       - name: Checkout main branch
         run: git checkout main
 
+      - name: Configure SSH Key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa    
+
       - name: Pull latest changes from main
         run: git pull origin main
 
@@ -52,5 +55,4 @@ jobs:
           git config --global user.name "akkewacheiei"
 
       - name: Push changes to gh-pages
-        run: |
-          git push https://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@github.com/${{ github.repository }}.git HEAD:gh-pages
+        run: git push git@github.com:${{ github.repository }}.git HEAD:gh-pages
