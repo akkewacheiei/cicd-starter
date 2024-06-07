@@ -43,5 +43,4 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout -B gh-pages
           git add .
-          git commit -m "Deploy updated files from main"
           git push -f origin gh-pages
