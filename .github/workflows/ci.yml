@@ -50,6 +50,7 @@ jobs:
         run: |
           git config --global user.email "akkewach.yodsomboon@gmail.com"
           git config --global user.name "akkewacheiei"
-      
+
       - name: Push changes to gh-pages
-        run: git push origin HEAD:gh-pages
+        run: |
+          git push https://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@github.com/${{ github.repository }}.git HEAD:gh-pages
