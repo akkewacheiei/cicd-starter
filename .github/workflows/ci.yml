@@ -37,8 +37,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Get latest changes from main
-        run: git fetch origin main:main
+      - name: Checkout main branch
+        run: git checkout main
+
+      - name: Pull latest changes from main
+        run: git pull origin main
 
       - name: Merge main into gh-pages
         run: git merge --no-commit --no-ff main
