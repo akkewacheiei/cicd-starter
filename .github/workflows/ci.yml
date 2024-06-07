@@ -53,4 +53,4 @@ jobs:
 
       - name: Push changes to gh-pages
         run: |
-          git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
+          git push https://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@github.com/${{ github.repository }}.git HEAD:gh-pages
