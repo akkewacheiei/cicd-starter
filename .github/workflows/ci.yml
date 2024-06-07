@@ -38,7 +38,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git checkout --orphan gh-pages
           git rm -rf .
-          cp -r ./
+          cp -r ./index.html .   # ระบุเส้นทางของ index.html หรือไฟล์อื่นที่คุณต้องการ deploy ในนี้
           git add .
           git commit -m "Deploy to GitHub Pages"
           git remote add origin_with_token https://$GITHUB_ACTOR:$PERSONAL_ACCESS_TOKEN@github.com/${GITHUB_REPOSITORY}.git
