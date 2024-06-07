@@ -50,10 +50,6 @@ jobs:
         run: |
           git config --global user.email "akkewach.yodsomboon@gmail.com"
           git config --global user.name "akkewacheiei"
-
-      - name: Commit changes
-        run: |
-          git commit -m "Update index.html from main"
       
       - name: Push changes to gh-pages
         run: git push origin HEAD:gh-pages
