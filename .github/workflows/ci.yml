@@ -41,7 +41,8 @@ jobs:
         run: git checkout main
 
       - name: Configure SSH Key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa    
+        run: |
+          mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa    
 
       - name: Pull latest changes from main
         run: git pull origin main
