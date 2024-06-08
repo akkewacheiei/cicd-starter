@@ -45,10 +45,10 @@ jobs:
           mkdir -p ~/.ssh && echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa    
 
       - name: Pull latest changes from main
-        run: git pull origin main
+        run: git pull --rebase origin main
 
       - name: Merge main into gh-pages
-        run: git merge --ff-only main
+        run: git rebase main
 
       - name: Configure Git
         run: |
@@ -56,4 +56,4 @@ jobs:
           git config --global user.name "akkewacheiei"
 
       - name: Push changes to gh-pages
-        run: git push git@github.com:${{ github.repository }}.git HEAD:gh-pages
+        run: git push git@github.com:${{ github.repository }}.git HEAD:gh-pages --force
