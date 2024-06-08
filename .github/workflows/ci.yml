@@ -48,7 +48,7 @@ jobs:
         run: git pull origin main
 
       - name: Merge main into gh-pages
-        run: git merge --no-commit --no-ff main
+        run: git merge --ff-only main
 
       - name: Configure Git
         run: |
